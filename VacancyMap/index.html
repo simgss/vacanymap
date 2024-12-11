@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Housing Vacancy Rates</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet CSS and JS -->
+    <link href="/dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .leaflet-popup-content {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #housingContainer {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        .vacancy-indicators {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="housingContainer">
+        <!-- Vacancy indicators -->
+        <div class="vacancy-indicators">
+            <div class="vacancy-header">
+                <h6>Vacancy Rates</h6>
+            </div>
+            <div class="vacancy-content">
+                <div class="vacancy-level">
+                    <div class="color-box low-vacancy"></div>
+                    <span>Low Vacancy</span>
+                </div>
+                <div class="vacancy-level">
+                    <div class="color-box high-vacancy"></div>
+                    <span>High Vacancy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="housing-stats.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const housingStats = new HousingStats('housingContainer');
+        });
+    </script>
+</body>
+</html> 
